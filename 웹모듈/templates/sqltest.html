@@ -1,0 +1,26 @@
+<html>
+<head>
+<style>
+table, th, td{
+	border : 1px solid black;
+}
+</style>
+<meta charset="UTF-8">
+<title>회원관리</title>
+</head>
+<body>
+<table>
+	<tr>
+		<th>선수id</th>
+		<th>선수이름</th>
+	</tr>
+		{% for row in result_table%}
+		<tr>
+			<td>{{row.player_id}}</td>
+			<td>{{row.player_name}}</td>
+            <td><button onclick="location.href='/detail?id={{row.player_id}}&name={{row.player_name}}'">상세정보</button></td>
+            <td><button onclick="location.href='/delete?id={{row.player_id}}&name={{row.player_name}}'">삭제</button></td>
+		</tr>
+		{% endfor %}
+</table>
+</body>

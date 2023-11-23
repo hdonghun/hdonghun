@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table, th, td, tr{
+	border : 1px solid red;
+}
+</style>
+<meta charset="UTF-8">
+<title>회원관리</title>
+</head>
+<body>
+	<h2> 선수 상세정보 </h2>
+<table>
+	<tr>
+		<th>선수id</th>
+		<th>선수이름</th>
+        <th>팀이름</th>
+        <th>weight</th>
+        <th>height</th>
+	</tr>
+		{% for row in result_table%}
+		<tr>
+			<td>{{row.player_id}}</td>
+            <td>{{row.player_name}}</td>
+            <td>{{row.team_name}}</td>
+			<td>{{row.weight}}</td>
+            <td>{{row.height}}</td>
+		</tr>
+		{% endfor %}
+</table>
+
+<h2>선수 정보 수정</h2>
+
+<table>
+	<tr>
+		<th>선수id</th>
+		<th>선수이름</th>
+        <th>팀이름</th>
+        <th>weight</th>
+        <th>height</th>
+		<th>      </th>
+	</tr>
+		
+		{% for row in result_table%}
+		<form action="/update?id={{row.player_id}}&name={{row.player_name}}" method="post">
+			<tr>
+				<td>{{row.player_id}}</td>
+				<td><input type="text" name="pname"></input></td>
+				<td><input type="text" name="tname"></input></td>
+				<td><input type="text" name="weight"></input></td>
+				<td><input type="text" name="height"></input></td>
+				<td><input type="submit" value="확인"></input></td>
+			</tr>
+		</form>
+		{% endfor %}
+</table>
+</body>
+</html>
+
